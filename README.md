@@ -122,35 +122,37 @@ NEXT_PUBLIC_BASE_PATH=/yeselia
 NEXT_PUBLIC_SITE_URL=https://username.github.io/yeselia
 ```
 
-## Deploy to GitHub Pages
+## Live site
 
-### One-time repository setup
+**https://ld1878.github.io/yeselia/**
 
-1. Push this repository to GitHub.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. Optional: under **Settings → Secrets and variables → Actions → Variables**, add:
-   - `NEXT_PUBLIC_BASE_PATH` = `/your-repo-name` (omit for `username.github.io` user sites or custom domains at root)
-   - `NEXT_PUBLIC_SITE_URL` = your full public URL
+GitHub Pages is configured to deploy from the `main` branch root. The static export is published to the repository root (`index.html`, `_next/`, route folders) with `basePath` set to `/yeselia`.
 
 ### Automatic deploy
 
-Push to `main`. The workflow in `.github/workflows/deploy.yml` builds the static export and deploys to Pages.
+Push changes under `app/`, `components/`, `lib/`, or related config to `main`. The workflow in `.github/workflows/deploy.yml`:
+
+1. Builds the Next.js static export with `NEXT_PUBLIC_BASE_PATH=/yeselia`
+2. Copies the `out/` contents to the branch root
+3. Commits and pushes the published site (no deploy loop: only source paths trigger the workflow)
+
+You can also run the workflow manually from the Actions tab (`workflow_dispatch`).
 
 ### Manual local build for Pages
 
 ```bash
-export NEXT_PUBLIC_BASE_PATH=/yeselia   # if needed
-export NEXT_PUBLIC_SITE_URL=https://username.github.io/yeselia
+export NEXT_PUBLIC_BASE_PATH=/yeselia
+export NEXT_PUBLIC_SITE_URL=https://ld1878.github.io/yeselia
 npm run build
-# Upload the contents of out/ as the Pages artifact, or serve locally:
+cp -a out/. .
+# Commit the published files, or preview with:
 npx serve out
 ```
 
-### Custom domain
+### Custom domain later
 
-1. Add a `CNAME` file in `public/` with your domain (or configure in repo Pages settings).
-2. Leave `NEXT_PUBLIC_BASE_PATH` empty.
+1. Add a `CNAME` in `public/` (or configure in repo Pages settings).
+2. Build with an empty `NEXT_PUBLIC_BASE_PATH` and update the workflow env vars.
 3. Set `NEXT_PUBLIC_SITE_URL` to `https://yourdomain.com`.
 
 ## Multilingual readiness
