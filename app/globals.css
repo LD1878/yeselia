@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* Yeselia & Co. design tokens                                                */
+/* Pure greyscale + precise purple accent                                     */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --grey-50: #fafafa;
+  --grey-100: #f5f5f5;
+  --grey-200: #e5e5e5;
+  --grey-300: #d4d4d4;
+  --grey-400: #a3a3a3;
+  --grey-500: #737373;
+  --grey-600: #525252;
+  --grey-700: #404040;
+  --grey-800: #262626;
+  --grey-900: #171717;
+  --purple: #5c2d91;
+
+  --background: var(--white);
+  --foreground: var(--black);
+  --muted: var(--grey-600);
+  --border: var(--grey-200);
+  --surface: var(--grey-50);
+
+  --header-height: 4.5rem;
+  --header-height-mobile: 4rem;
+}
+
+@theme inline {
+  --color-black: var(--black);
+  --color-white: var(--white);
+  --color-grey-50: var(--grey-50);
+  --color-grey-100: var(--grey-100);
+  --color-grey-200: var(--grey-200);
+  --color-grey-300: var(--grey-300);
+  --color-grey-400: var(--grey-400);
+  --color-grey-500: var(--grey-500);
+  --color-grey-600: var(--grey-600);
+  --color-grey-700: var(--grey-700);
+  --color-grey-800: var(--grey-800);
+  --color-grey-900: var(--grey-900);
+  --color-purple: var(--purple);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, "Times New Roman", serif;
+
+  --spacing-section: clamp(4rem, 8vw, 7.5rem);
+  --spacing-section-sm: clamp(3rem, 5vw, 5rem);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                       */
+/* -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prefer calm, controlled motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typography                                                                 */
+/* -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Focus rings: subtle purple, never heavy */
+:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--purple) 18%, transparent);
+  color: var(--black);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utility helpers                                                            */
+/* -------------------------------------------------------------------------- */
+
+.container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-inline: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-inline: 2.5rem;
+  }
+}
+
+.section-y {
+  padding-block: var(--spacing-section);
+}
+
+.section-y-sm {
+  padding-block: var(--spacing-section-sm);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Prose for long-form insights */
+.prose-yeselia {
+  max-width: 42rem;
+  color: var(--grey-800);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose-yeselia p + p {
+  margin-top: 1.25rem;
+}
+
+.prose-yeselia h2 {
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  color: var(--black);
+}
+
+.prose-yeselia h3 {
+  font-size: clamp(1.25rem, 2vw, 1.375rem);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--black);
+}
+
+.prose-yeselia ul {
+  margin: 1.25rem 0;
+  padding-left: 1.25rem;
+}
+
+.prose-yeselia li {
+  margin-top: 0.5rem;
+}
+
+.prose-yeselia li::marker {
+  color: var(--purple);
+}
+
+.prose-yeselia a {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.prose-yeselia a:hover {
+  color: var(--purple);
+  text-decoration-color: var(--purple);
+}
+
+.prose-yeselia strong {
+  color: var(--black);
+  font-weight: 560;
+}
+
+/* Hide scrollbar on horizontal filter strips without breaking a11y */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
