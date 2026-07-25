@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+import Link from "next/link";
 import { useLocale } from "@/components/layout/LocaleProvider";
 import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
@@ -18,43 +20,77 @@ export function HomeContent({ variant }: HomeContentProps) {
   const featured = getFeaturedProperties(4);
 
   if (variant === "hero") {
+    /* Inline colors beat unlayered h1 { color: black } and Button variant clashes */
+    const heroH1Style: CSSProperties = {
+      color: "#C9A0E8",
+      fontWeight: 900,
+      letterSpacing: "-0.035em",
+      lineHeight: 1.08,
+      textShadow: "0 2px 24px rgba(0,0,0,0.55)",
+    };
+    const heroLeadStyle: CSSProperties = {
+      color: "#FFFFFF",
+      textShadow: "0 1px 12px rgba(0,0,0,0.5)",
+    };
+    const btnPrimaryStyle: CSSProperties = {
+      backgroundColor: "#FFFFFF",
+      color: "#4A1C6B",
+      border: "2px solid #FFFFFF",
+      fontWeight: 700,
+    };
+    const btnSecondaryStyle: CSSProperties = {
+      backgroundColor: "#4A1C6B",
+      color: "#FFFFFF",
+      border: "2px solid #C9A0E8",
+      fontWeight: 700,
+    };
+
     return (
       <div className="relative z-10 flex h-full min-h-[70vh] flex-col justify-end px-6 pb-10 pt-24 sm:min-h-[78vh] sm:px-10 sm:pb-14 lg:px-14 lg:pb-16">
         <FadeIn>
-          <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+          <p
+            className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em]"
+            style={{ color: "#FFFFFF" }}
+          >
             <span
-              className="inline-block h-1.5 w-1.5 rounded-full bg-[#c4a3e0]"
+              className="inline-block h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: "#C9A0E8" }}
               aria-hidden="true"
             />
             {t("home.hero.eyebrow")}
           </p>
-          {/* Explicit text-white on h1 — dark photo background */}
-          <h1 className="heading-display max-w-3xl text-balance text-[2.5rem] text-white sm:text-5xl lg:text-6xl">
+          <h1
+            className="hero-title max-w-3xl text-balance text-[2.5rem] sm:text-5xl lg:text-6xl"
+            style={heroH1Style}
+          >
             {t("home.hero.title1")}
             <br />
             {t("home.hero.title2")}
             <br />
             {t("home.hero.title3")}
-            <span className="text-[#c4a3e0]">.</span>
+            <span style={{ color: "#FFFFFF" }}>.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white sm:text-lg">
+          <p
+            className="mt-6 max-w-xl text-pretty text-base leading-relaxed sm:text-lg"
+            style={heroLeadStyle}
+          >
             {t("home.hero.lead")}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button
+            <Link
               href="/buy/"
-              size="lg"
-              className="border-white bg-white !text-black hover:border-white hover:bg-white hover:!text-purple"
+              className="inline-flex min-h-[3.25rem] items-center justify-center px-8 text-base tracking-wide transition-opacity hover:opacity-90"
+              style={btnPrimaryStyle}
             >
               {t("cta.buy")}
-            </Button>
-            <Button
+            </Link>
+            <Link
               href="/sell/"
-              size="lg"
-              className="border-2 border-white bg-transparent !text-white hover:border-white hover:bg-white/20 hover:!text-white"
+              className="inline-flex min-h-[3.25rem] items-center justify-center px-8 text-base tracking-wide transition-opacity hover:opacity-90"
+              style={btnSecondaryStyle}
             >
               {t("cta.sell")}
-            </Button>
+            </Link>
           </div>
         </FadeIn>
       </div>

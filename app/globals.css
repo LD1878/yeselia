@@ -115,6 +115,7 @@ h5,
 h6 {
   font-family: var(--font-sans);
   font-weight: 800;
+  /* Default only — never !important so hero/utilities can override */
   color: var(--black);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -123,6 +124,12 @@ h6 {
 
 h1 {
   font-weight: 900;
+}
+
+/* Hero on dark photography — highest priority so never black-on-dark */
+.hero-title {
+  color: #c9a0e8 !important;
+  font-weight: 900 !important;
 }
 
 p {
