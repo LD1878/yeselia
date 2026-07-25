@@ -20,7 +20,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-none border border-grey-300 bg-white",
+        "inline-flex items-center rounded-none border-2 border-purple bg-white",
         compact ? "h-9" : "h-10",
         className,
       )}
@@ -40,8 +40,8 @@ export function LanguageSwitcher({
               "min-w-[2.5rem] px-2.5 text-xs font-bold tracking-wide transition-colors duration-150",
               compact ? "h-9" : "h-10",
               active
-                ? "bg-black text-white"
-                : "bg-transparent text-grey-700 hover:bg-grey-50 hover:text-black",
+                ? "bg-purple text-white"
+                : "bg-transparent text-purple hover:bg-purple/10",
             )}
           >
             {code === "en" ? t("lang.en") : t("lang.es")}
