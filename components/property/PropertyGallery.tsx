@@ -22,7 +22,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="img-vibrant object-cover object-center"
         />
       </div>
 
@@ -41,9 +41,9 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
               aria-label={`Show image ${index + 1}`}
               onClick={() => setActive(index)}
               className={cn(
-                "relative h-16 w-24 shrink-0 overflow-hidden border transition-colors duration-200 sm:h-20 sm:w-28",
+                "relative h-16 w-24 shrink-0 overflow-hidden border-2 transition-colors duration-200 sm:h-20 sm:w-28",
                 index === active
-                  ? "border-black"
+                  ? "border-purple"
                   : "border-grey-200 hover:border-grey-400",
               )}
             >
@@ -52,14 +52,8 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
                 alt=""
                 fill
                 sizes="112px"
-                className="object-cover"
+                className="img-vibrant object-cover"
               />
-              {index === active ? (
-                <span
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple"
-                  aria-hidden="true"
-                />
-              ) : null}
             </button>
           ))}
         </div>

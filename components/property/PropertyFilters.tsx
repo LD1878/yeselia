@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useLocale } from "@/components/layout/LocaleProvider";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { Field, Select } from "@/components/ui/FormFields";
 import type { Property, PropertyType } from "@/lib/types";
@@ -36,6 +37,7 @@ function matchesPrice(price: number, band: string): boolean {
 }
 
 export function PropertyFilters({ properties }: { properties: Property[] }) {
+  const { t, tFormat } = useLocale();
   const [filters, setFilters] = useState<Filters>(initial);
 
   const filtered = useMemo(() => {
@@ -59,18 +61,23 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
+  const countLabel =
+    filtered.length === 1
+      ? tFormat("properties.filter.countOne", { n: filtered.length })
+      : tFormat("properties.filter.count", { n: filtered.length });
+
   return (
     <div>
       <div className="border border-grey-200 bg-grey-50 p-5 sm:p-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Field label="Location" id="filter-location">
+          <Field label={t("properties.filter.location")} id="filter-location">
             <Select
               id="filter-location"
               value={filters.location}
               onChange={(e) => update("location", e.target.value)}
-              aria-label="Filter by location"
+              aria-label={t("properties.filter.location")}
             >
-              <option value="all">All locations</option>
+              <option value="all">{t("properties.filter.allLocations")}</option>
               {propertyLocations.map((loc) => (
                 <option key={loc} value={loc}>
                   {loc}
@@ -79,14 +86,14 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
             </Select>
           </Field>
 
-          <Field label="Type" id="filter-type">
+          <Field label={t("properties.filter.type")} id="filter-type">
             <Select
               id="filter-type"
               value={filters.type}
               onChange={(e) => update("type", e.target.value)}
-              aria-label="Filter by property type"
+              aria-label={t("properties.filter.type")}
             >
-              <option value="all">All types</option>
+              <option value="all">{t("properties.filter.allTypes")}</option>
               {propertyTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -95,14 +102,14 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
             </Select>
           </Field>
 
-          <Field label="Bedrooms" id="filter-bedrooms">
+          <Field label={t("properties.filter.bedrooms")} id="filter-bedrooms">
             <Select
               id="filter-bedrooms"
               value={filters.bedrooms}
               onChange={(e) => update("bedrooms", e.target.value)}
-              aria-label="Filter by minimum bedrooms"
+              aria-label={t("properties.filter.bedrooms")}
             >
-              <option value="all">Any</option>
+              <option value="all">{t("properties.filter.any")}</option>
               <option value="3">3+</option>
               <option value="4">4+</option>
               <option value="5">5+</option>
@@ -110,14 +117,14 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
             </Select>
           </Field>
 
-          <Field label="Price" id="filter-price">
+          <Field label={t("properties.filter.price")} id="filter-price">
             <Select
               id="filter-price"
               value={filters.price}
               onChange={(e) => update("price", e.target.value)}
-              aria-label="Filter by price range"
+              aria-label={t("properties.filter.price")}
             >
-              <option value="all">Any price</option>
+              <option value="all">{t("properties.filter.anyPrice")}</option>
               <option value="under-2m">Under €2M</option>
               <option value="2m-4m">€2M - €4M</option>
               <option value="4m-8m">€4M - €8M</option>
@@ -127,29 +134,32 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-grey-600" aria-live="polite">
-            {filtered.length}{" "}
-            {filtered.length === 1 ? "property" : "properties"}
+          <p className="text-sm font-medium text-grey-700" aria-live="polite">
+            {countLabel}
           </p>
           <button
             type="button"
             onClick={() => setFilters(initial)}
-            className="min-h-11 text-sm text-grey-600 underline-offset-4 transition-colors hover:text-purple hover:underline"
+            className="min-h-11 text-sm font-semibold text-grey-700 underline-offset-4 transition-colors hover:text-purple hover:underline"
           >
-            Reset filters
+            {t("properties.filter.reset")}
           </button>
         </div>
       </div>
 
       {filtered.length === 0 ? (
         <div className="mt-12 border border-grey-200 px-6 py-16 text-center">
-          <p className="font-serif text-2xl text-black">No properties match</p>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-grey-600">
-            Adjust your filters, or{" "}
-            <a href="/contact/" className="text-black underline underline-offset-4 hover:text-purple">
-              contact us
-            </a>{" "}
-            for a confidential search tailored to your brief.
+          <p className="heading-section text-2xl">
+            {t("properties.empty.title")}
+          </p>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-grey-700">
+            {t("properties.empty.text")}{" "}
+            <a
+              href="/contact/"
+              className="font-semibold text-black underline underline-offset-4 hover:text-purple"
+            >
+              {t("cta.contact")}
+            </a>
           </p>
         </div>
       ) : (

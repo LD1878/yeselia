@@ -25,16 +25,16 @@ export function CtaBand({
       <div className="mx-auto max-w-7xl px-5 sm:px-7 lg:px-10">
         <div className="mx-auto max-w-2xl text-center">
           <span
-            className="mx-auto mb-5 block h-1 w-1 rounded-full bg-purple"
+            className="mx-auto mb-5 block h-1.5 w-1.5 rounded-full bg-purple"
             aria-hidden="true"
           />
-          <h2 className="text-balance font-serif text-3xl text-black sm:text-4xl">
+          <h2 className="heading-section text-balance text-3xl sm:text-4xl">
             {title}
           </h2>
-          <p className="mt-5 text-pretty text-base leading-relaxed text-grey-600 sm:text-lg">
+          <p className="mt-5 text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
             {description}
           </p>
-          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <Button href={primaryHref} size="lg">
               {primaryLabel}
             </Button>

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale } from "@/components/layout/LocaleProvider";
 import { PropertyImage } from "@/components/ui/PropertyImage";
 import type { Property } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -14,6 +17,15 @@ export function PropertyCard({
   className,
   priority = false,
 }: PropertyCardProps) {
+  const { t } = useLocale();
+
+  const statusLabel =
+    property.status === "Under Offer"
+      ? t("properties.underOffer")
+      : property.status === "Sold"
+        ? t("properties.sold")
+        : null;
+
   return (
     <article className={cn("group", className)}>
       <Link
@@ -21,7 +33,7 @@ export function PropertyCard({
         className="block focus-visible:outline-offset-4"
       >
         <div className="overflow-hidden">
-          <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
+          <div className="transition-transform duration-700 ease-out group-hover:scale-[1.025]">
             <PropertyImage
               src={property.images[0]}
               alt={property.title}
@@ -35,10 +47,10 @@ export function PropertyCard({
         <div className="border border-t-0 border-grey-200 bg-white px-5 py-5 sm:px-6 sm:py-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-grey-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-grey-600">
                 {property.location}
               </p>
-              <h3 className="mt-2 font-serif text-xl leading-snug text-black sm:text-[1.375rem]">
+              <h3 className="heading-section mt-2 text-xl leading-snug sm:text-[1.375rem]">
                 {property.title}
               </h3>
             </div>
@@ -48,14 +60,16 @@ export function PropertyCard({
             />
           </div>
 
-          <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-grey-600">
+          <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-grey-700">
             <div>
               <dt className="sr-only">Type</dt>
               <dd>{property.type}</dd>
             </div>
             <div>
               <dt className="sr-only">Bedrooms</dt>
-              <dd>{property.bedrooms} bed</dd>
+              <dd>
+                {property.bedrooms} {t("properties.bed")}
+              </dd>
             </div>
             <div>
               <dt className="sr-only">Built area</dt>
@@ -63,13 +77,13 @@ export function PropertyCard({
             </div>
           </dl>
 
-          <p className="mt-4 text-sm font-medium tracking-wide text-black">
+          <p className="mt-4 text-base font-bold tracking-tight text-black">
             {property.priceLabel}
           </p>
 
-          {property.status !== "Available" ? (
-            <p className="mt-2 text-xs uppercase tracking-[0.12em] text-grey-500">
-              {property.status}
+          {statusLabel ? (
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-purple">
+              {statusLabel}
             </p>
           ) : null}
         </div>

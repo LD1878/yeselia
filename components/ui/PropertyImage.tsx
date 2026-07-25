@@ -20,8 +20,7 @@ const aspectClasses = {
 } as const;
 
 /**
- * High-quality image treatment with fixed aspect ratios.
- * Greyscale-friendly presentation for architectural photography.
+ * High-quality property photography with fixed aspect ratios.
  */
 export function PropertyImage({
   src,
@@ -46,7 +45,7 @@ export function PropertyImage({
         fill={fill}
         priority={priority}
         sizes={sizes}
-        className="object-cover object-center transition-transform duration-700 ease-out will-change-transform"
+        className="img-vibrant object-cover object-center transition-transform duration-700 ease-out will-change-transform"
       />
     </div>
   );

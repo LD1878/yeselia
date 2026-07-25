@@ -6,22 +6,22 @@ type Variant = "primary" | "secondary" | "ghost" | "link";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-sans font-medium tracking-wide transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple disabled:pointer-events-none disabled:opacity-45";
+  "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-wide transition-all duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple disabled:pointer-events-none disabled:opacity-45 active:scale-[0.99]";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-black text-white border border-black hover:border-purple hover:bg-black",
+    "bg-black text-white border border-black hover:bg-purple hover:border-purple",
   secondary:
-    "bg-white text-black border border-grey-300 hover:border-black",
+    "bg-white text-black border border-grey-300 hover:border-black hover:bg-grey-50",
   ghost:
-    "bg-transparent text-black border border-transparent hover:bg-grey-50",
-  link: "bg-transparent text-black border-0 underline-offset-[0.28em] hover:text-purple hover:underline px-0",
+    "bg-transparent text-black border border-transparent hover:bg-grey-100",
+  link: "bg-transparent text-black border-0 underline-offset-[0.28em] hover:text-purple hover:underline px-0 font-semibold",
 };
 
 const sizes: Record<Size, string> = {
   sm: "min-h-11 px-5 text-sm",
   md: "min-h-12 px-7 text-sm sm:text-[0.9375rem]",
-  lg: "min-h-13 px-8 text-base min-h-[3.25rem]",
+  lg: "min-h-[3.25rem] px-8 text-base",
 };
 
 type CommonProps = {
@@ -69,7 +69,11 @@ export function Button({
 
   const buttonProps = props as ButtonAsButton;
   return (
-    <button className={classes} type={buttonProps.type ?? "button"} {...buttonProps}>
+    <button
+      className={classes}
+      type={buttonProps.type ?? "button"}
+      {...buttonProps}
+    >
       {children}
     </button>
   );

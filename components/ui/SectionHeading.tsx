@@ -12,8 +12,7 @@ type SectionHeadingProps = {
 };
 
 /**
- * Section title with optional tiny purple accent mark.
- * Purple is used as a precise detail only.
+ * Section title: Inter ExtraBold + optional purple accent mark.
  */
 export function SectionHeading({
   eyebrow,
@@ -35,13 +34,13 @@ export function SectionHeading({
       {eyebrow ? (
         <p
           className={cn(
-            "mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-grey-600",
+            "mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-grey-700",
             align === "center" && "justify-center",
           )}
         >
           {mark ? (
             <span
-              className="inline-block h-1 w-1 shrink-0 rounded-full bg-purple"
+              className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-purple"
               aria-hidden="true"
             />
           ) : null}
@@ -50,19 +49,19 @@ export function SectionHeading({
       ) : mark ? (
         <span
           className={cn(
-            "mb-5 block h-1 w-1 rounded-full bg-purple",
+            "mb-5 block h-1.5 w-1.5 rounded-full bg-purple",
             align === "center" && "mx-auto",
           )}
           aria-hidden="true"
         />
       ) : null}
 
-      <TitleTag className="text-balance text-[1.875rem] leading-[1.15] sm:text-4xl lg:text-[2.75rem]">
+      <TitleTag className="heading-section text-balance text-[1.875rem] sm:text-4xl lg:text-[2.75rem]">
         {title}
       </TitleTag>
 
       {description ? (
-        <div className="mt-5 text-pretty text-base leading-relaxed text-grey-600 sm:text-lg">
+        <div className="mt-5 text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
           {description}
         </div>
       ) : null}

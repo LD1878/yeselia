@@ -7,18 +7,20 @@ type LogoProps = {
   size?: "sm" | "md" | "lg";
 };
 
+/** Thick black wordmark + large brand-purple full stop */
 const sizeMap = {
-  sm: { height: 22, fontSize: 17, width: 118 },
-  md: { height: 28, fontSize: 21, width: 146 },
-  lg: { height: 36, fontSize: 28, width: 194 },
+  sm: { height: 26, fontSize: 17, width: 142, periodSize: 28 },
+  md: { height: 32, fontSize: 21, width: 174, periodSize: 36 },
+  lg: { height: 42, fontSize: 28, width: 232, periodSize: 48 },
 } as const;
 
 /**
- * Wordmark: “Yeselia & Co.” with a solid purple full stop after Co.
- * SVG for perfect scaling; period colour is exact (#5C2D91).
+ * Wordmark: thick black “Yeselia & Co” + large dark purple full stop (#4A1C6B).
+ * Inter Black (900) for premium weight.
  */
 export function Logo({ className, href = "/", size = "md" }: LogoProps) {
-  const { height, fontSize, width } = sizeMap[size];
+  const { height, fontSize, width, periodSize } = sizeMap[size];
+  const baseline = height * 0.78;
 
   const mark = (
     <svg
@@ -33,18 +35,28 @@ export function Logo({ className, href = "/", size = "md" }: LogoProps) {
       <title>Yeselia & Co.</title>
       <text
         x="0"
-        y={height * 0.76}
+        y={baseline}
         fill="#0A0A0A"
         style={{
           fontFamily:
             "var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif",
           fontSize,
-          fontWeight: 520,
-          letterSpacing: "0.02em",
+          fontWeight: 900,
+          letterSpacing: "-0.025em",
         }}
       >
         Yeselia &amp; Co
-        <tspan fill="#5C2D91">.</tspan>
+        <tspan
+          fill="#4A1C6B"
+          style={{
+            fontSize: periodSize,
+            fontWeight: 900,
+            letterSpacing: "0",
+          }}
+          dy={periodSize * 0.06}
+        >
+          .
+        </tspan>
       </text>
     </svg>
   );
