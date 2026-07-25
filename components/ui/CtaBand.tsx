@@ -28,10 +28,10 @@ export function CtaBand({
             className="mx-auto mb-5 block h-1.5 w-1.5 rounded-full bg-purple"
             aria-hidden="true"
           />
-          <h2 className="heading-section text-balance text-3xl sm:text-4xl">
+          <h2 className="heading-section text-balance text-3xl text-black sm:text-4xl">
             {title}
           </h2>
-          <p className="mt-5 text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
+          <p className="mt-5 text-pretty text-base leading-relaxed text-grey-800 sm:text-lg">
             {description}
           </p>
           <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">

@@ -39,11 +39,11 @@ export function PageHero({
               aria-hidden="true"
             />
           )}
-          <h1 className="heading-display text-balance text-[2.25rem] sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="heading-display text-balance text-[2.25rem] text-black sm:text-5xl lg:text-[3.5rem]">
             {title}
           </h1>
           {description ? (
-            <div className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
+            <div className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-grey-800 sm:text-lg">
               {description}
             </div>
           ) : null}

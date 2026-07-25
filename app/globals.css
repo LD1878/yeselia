@@ -197,13 +197,14 @@ textarea {
   text-wrap: pretty;
 }
 
-/* Display headings — Black weight, tight tracking */
+/* Display headings — weight/tracking only.
+   Do NOT set color here: it would override text-white / other utilities
+   (e.g. hero on dark photo). Body colour comes from base h1–h6 / text-*. */
 .heading-display {
   font-family: var(--font-sans);
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 1.08;
-  color: var(--black);
 }
 
 .heading-section {
@@ -211,7 +212,6 @@ textarea {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.12;
-  color: var(--black);
 }
 
 /* Property photography: slightly richer without looking filtered */

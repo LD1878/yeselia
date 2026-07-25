@@ -56,12 +56,12 @@ export function SectionHeading({
         />
       ) : null}
 
-      <TitleTag className="heading-section text-balance text-[1.875rem] sm:text-4xl lg:text-[2.75rem]">
+      <TitleTag className="heading-section text-balance text-[1.875rem] text-black sm:text-4xl lg:text-[2.75rem]">
         {title}
       </TitleTag>
 
       {description ? (
-        <div className="mt-5 text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
+        <div className="mt-5 text-pretty text-base leading-relaxed text-grey-800 sm:text-lg">
           {description}
         </div>
       ) : null}

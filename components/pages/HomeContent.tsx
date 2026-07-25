@@ -19,39 +19,39 @@ export function HomeContent({ variant }: HomeContentProps) {
 
   if (variant === "hero") {
     return (
-      <div className="relative flex h-full min-h-[70vh] flex-col justify-end px-6 pb-10 pt-24 sm:min-h-[78vh] sm:px-10 sm:pb-14 lg:px-14 lg:pb-16">
+      <div className="relative z-10 flex h-full min-h-[70vh] flex-col justify-end px-6 pb-10 pt-24 sm:min-h-[78vh] sm:px-10 sm:pb-14 lg:px-14 lg:pb-16">
         <FadeIn>
           <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white">
             <span
-              className="inline-block h-1.5 w-1.5 rounded-full bg-purple"
+              className="inline-block h-1.5 w-1.5 rounded-full bg-[#c4a3e0]"
               aria-hidden="true"
             />
             {t("home.hero.eyebrow")}
           </p>
+          {/* Explicit text-white on h1 — dark photo background */}
           <h1 className="heading-display max-w-3xl text-balance text-[2.5rem] text-white sm:text-5xl lg:text-6xl">
             {t("home.hero.title1")}
             <br />
             {t("home.hero.title2")}
             <br />
             {t("home.hero.title3")}
-            <span className="text-purple">.</span>
+            <span className="text-[#c4a3e0]">.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/95 sm:text-lg">
+          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white sm:text-lg">
             {t("home.hero.lead")}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button
               href="/buy/"
               size="lg"
-              className="border-white bg-white text-black hover:border-white hover:bg-white hover:text-purple"
+              className="border-white bg-white !text-black hover:border-white hover:bg-white hover:!text-purple"
             >
               {t("cta.buy")}
             </Button>
             <Button
               href="/sell/"
               size="lg"
-              variant="secondary"
-              className="border-white/70 bg-transparent text-white hover:border-white hover:bg-white/15"
+              className="border-2 border-white bg-transparent !text-white hover:border-white hover:bg-white/20 hover:!text-white"
             >
               {t("cta.sell")}
             </Button>
@@ -88,10 +88,10 @@ export function HomeContent({ variant }: HomeContentProps) {
             </div>
             <div className="lg:col-span-7">
               <FadeIn>
-                <p className="text-pretty text-lg leading-relaxed text-grey-800 sm:text-xl">
+                <p className="text-pretty text-lg leading-relaxed text-grey-900 sm:text-xl">
                   {t("home.pos.p1")}
                 </p>
-                <p className="mt-6 text-pretty text-base leading-relaxed text-grey-700">
+                <p className="mt-6 text-pretty text-base leading-relaxed text-grey-800">
                   {t("home.pos.p2")}
                 </p>
                 <div className="mt-8">
@@ -149,10 +149,10 @@ export function HomeContent({ variant }: HomeContentProps) {
                   className="mb-5 block h-1.5 w-1.5 rounded-full bg-purple"
                   aria-hidden="true"
                 />
-                <h3 className="heading-section text-xl sm:text-2xl">
+                <h3 className="heading-section text-xl text-black sm:text-2xl">
                   {t(item.titleKey)}
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-grey-700 sm:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-grey-800 sm:text-base">
                   {t(item.textKey)}
                 </p>
               </div>
@@ -175,10 +175,10 @@ export function HomeContent({ variant }: HomeContentProps) {
                   <p className="text-xs font-bold tracking-[0.16em] text-purple">
                     {item.step}
                   </p>
-                  <h3 className="heading-section mt-3 text-xl">
+                  <h3 className="heading-section mt-3 text-xl text-black">
                     {t(item.titleKey)}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-grey-700">
+                  <p className="mt-3 text-sm leading-relaxed text-grey-800">
                     {t(item.textKey)}
                   </p>
                 </FadeIn>
