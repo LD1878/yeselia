@@ -89,7 +89,7 @@ export function Header() {
           <LanguageSwitcher className="ml-3" compact />
           <Link
             href="/contact/"
-            className="ml-2 inline-flex min-h-11 items-center border-2 border-purple bg-purple px-5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+            className="ml-2 inline-flex min-h-11 items-center border-2 border-purple bg-purple px-5 text-sm font-semibold text-white transition-opacity duration-200 hover:bg-purple hover:text-white hover:opacity-90"
           >
             {t("nav.enquire")}
           </Link>
@@ -172,13 +172,13 @@ export function Header() {
           <div className="mt-auto grid gap-3 pt-8">
             <Link
               href="/buy/"
-              className="flex min-h-[3.25rem] items-center justify-center border-2 border-purple bg-white text-sm font-semibold text-purple transition-opacity hover:opacity-90"
+              className="flex min-h-[3.25rem] items-center justify-center border-2 border-purple bg-white text-sm font-semibold text-purple transition-colors hover:bg-purple-soft hover:text-purple"
             >
               {t("cta.buy")}
             </Link>
             <Link
               href="/sell/"
-              className="flex min-h-[3.25rem] items-center justify-center border-2 border-purple bg-purple text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="flex min-h-[3.25rem] items-center justify-center border-2 border-purple bg-purple text-sm font-semibold text-white transition-opacity hover:bg-purple hover:text-white hover:opacity-90"
             >
               {t("cta.sell")}
             </Link>

@@ -32,6 +32,7 @@ export function HomeContent({ variant }: HomeContentProps) {
       color: "#FFFFFF",
       textShadow: "0 1px 12px rgba(0,0,0,0.5)",
     };
+    /* White button → purple text; purple button → white text */
     const btnPrimaryStyle: CSSProperties = {
       backgroundColor: "#FFFFFF",
       color: "#4A1C6B",
@@ -41,7 +42,7 @@ export function HomeContent({ variant }: HomeContentProps) {
     const btnSecondaryStyle: CSSProperties = {
       backgroundColor: "#4A1C6B",
       color: "#FFFFFF",
-      border: "2px solid #C9A0E8",
+      border: "2px solid #4A1C6B",
       fontWeight: 700,
     };
 

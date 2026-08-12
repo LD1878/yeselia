@@ -9,10 +9,12 @@ const base =
   "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-wide transition-all duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple disabled:pointer-events-none disabled:opacity-45 active:scale-[0.99]";
 
 const variants: Record<Variant, string> = {
+  /* Black fill → white label; purple hover keeps white label */
   primary:
-    "bg-black text-white border border-black hover:bg-purple hover:border-purple",
+    "bg-black text-white border border-black hover:bg-purple hover:border-purple hover:text-white",
+  /* White fill → purple label and border */
   secondary:
-    "bg-white text-black border border-grey-300 hover:border-black hover:bg-grey-50",
+    "bg-white text-purple border border-purple hover:border-purple hover:bg-purple-soft hover:text-purple",
   ghost:
     "bg-transparent text-black border border-transparent hover:bg-grey-100",
   link: "bg-transparent text-black border-0 underline-offset-[0.28em] hover:text-purple hover:underline px-0 font-semibold",
