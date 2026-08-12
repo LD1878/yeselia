@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://ld1878.github.io/yeselia/sitemap.xml
+Sitemap: https://yeselia.com/sitemap.xml

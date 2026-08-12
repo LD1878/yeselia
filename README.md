@@ -124,16 +124,16 @@ NEXT_PUBLIC_SITE_URL=https://username.github.io/yeselia
 
 ## Live site
 
-**https://ld1878.github.io/yeselia/**
+**https://yeselia.com**
 
-GitHub Pages is configured to deploy from the `main` branch root. The static export is published to the repository root (`index.html`, `_next/`, route folders) with `basePath` set to `/yeselia`.
+GitHub Pages is configured to deploy from the `main` branch root with the custom domain `yeselia.com`. The static export is published to the repository root (`index.html`, `_next/`, route folders, `CNAME`) with an empty `basePath` so assets resolve as `/_next/...`.
 
 ### Automatic deploy
 
 Push changes under `app/`, `components/`, `lib/`, or related config to `main`. The workflow in `.github/workflows/deploy.yml`:
 
-1. Builds the Next.js static export with `NEXT_PUBLIC_BASE_PATH=/yeselia`
-2. Copies the `out/` contents to the branch root
+1. Builds the Next.js static export with empty `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_SITE_URL=https://yeselia.com`
+2. Copies the `out/` contents to the branch root (including `CNAME` from `public/`)
 3. Commits and pushes the published site (no deploy loop: only source paths trigger the workflow)
 
 You can also run the workflow manually from the Actions tab (`workflow_dispatch`).
@@ -141,19 +141,21 @@ You can also run the workflow manually from the Actions tab (`workflow_dispatch`
 ### Manual local build for Pages
 
 ```bash
-export NEXT_PUBLIC_BASE_PATH=/yeselia
-export NEXT_PUBLIC_SITE_URL=https://ld1878.github.io/yeselia
+# Root domain / custom domain (default)
+export NEXT_PUBLIC_BASE_PATH=
+export NEXT_PUBLIC_SITE_URL=https://yeselia.com
 npm run build
 cp -a out/. .
 # Commit the published files, or preview with:
 npx serve out
 ```
 
-### Custom domain later
+### Project-pages path (optional)
 
-1. Add a `CNAME` in `public/` (or configure in repo Pages settings).
-2. Build with an empty `NEXT_PUBLIC_BASE_PATH` and update the workflow env vars.
-3. Set `NEXT_PUBLIC_SITE_URL` to `https://yourdomain.com`.
+If you ever need to serve from a GitHub project subpath again (e.g. `username.github.io/yeselia/`):
+
+1. Set `NEXT_PUBLIC_BASE_PATH=/yeselia` and matching `NEXT_PUBLIC_SITE_URL` in the workflow.
+2. Remove or stop relying on the custom-domain `CNAME`.
 
 ## Multilingual readiness
 

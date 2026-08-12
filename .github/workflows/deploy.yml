@@ -46,8 +46,10 @@ jobs:
 
       - name: Build static export
         env:
-          NEXT_PUBLIC_BASE_PATH: /yeselia
-          NEXT_PUBLIC_SITE_URL: https://ld1878.github.io/yeselia
+          # Custom domain is served from the site root (not /yeselia project path).
+          # Leave BASE_PATH empty so CSS/JS/fonts resolve as /_next/... on yeselia.com.
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: https://yeselia.com
         run: npm run build
 
       - name: Publish export to branch root
@@ -56,9 +58,10 @@ jobs:
 
           # Remove previous published site artefacts (keep source)
           rm -rf _next about buy contact insights properties sell 404 docs
-          rm -f index.html index.txt 404.html robots.txt sitemap.xml
+          rm -f index.html index.txt 404.html robots.txt sitemap.xml CNAME
 
           # Promote the fresh export to the repository root
+          # (CNAME comes from public/CNAME via the Next export)
           cp -a out/. .
           touch .nojekyll
 
