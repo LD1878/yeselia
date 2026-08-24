@@ -10,9 +10,9 @@ export const siteConfig = {
   locale: "en",
   locales: ["en", "es"] as const,
   defaultLocale: "en" as const,
-  email: "enquiries@yeselia.com",
-  phone: "+34 952 000 000",
-  phoneDisplay: "+34 952 000 000",
+  email: "info@yeselia.com",
+  phone: "+34 667 81 23 58",
+  phoneDisplay: "+34 667 81 23 58",
   address: {
     street: "Avenida Ricardo Soriano 72",
     locality: "Marbella",

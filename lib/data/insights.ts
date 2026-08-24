@@ -9,7 +9,7 @@ export const insights: Insight[] = [
     category: "Legal guides",
     publishedAt: "2025-11-12",
     readMinutes: 9,
-    relatedPropertySlugs: ["villa-sierra-blanca", "penthouse-puerto-banus"],
+    relatedPropertySlugs: ["villa-sierra-blanca", "penthouse-marina-banus"],
     content: [
       "Acquiring property on the Costa del Sol is straightforward when the legal sequence is correct. It becomes expensive when it is not. This guide outlines the essential checks that should precede any reservation or private contract.",
       "Title and charges. The first instruction is always a full Nota Simple from the Land Registry, followed by a deeper title review where necessary. You need clarity on ownership, mortgages, embargoes, easements and any pending legal proceedings. A clean façade is not evidence of clean title.",
@@ -65,7 +65,7 @@ export const insights: Insight[] = [
     category: "Legal guides",
     publishedAt: "2025-08-07",
     readMinutes: 7,
-    relatedPropertySlugs: ["apartment-marbella-old-town", "villa-estepona-hills"],
+    relatedPropertySlugs: ["villa-el-limonar", "villa-estepona-coast"],
     content: [
       "International buyers often underestimate the administrative path to completion in Spain. The legal purchase can be clear while the logistics still delay the notary appointment. Plan these items early.",
       "NIE number. The Número de Identificación de Extranjero is required for the purchase, for tax, and usually for opening a Spanish bank account. It can be obtained in Spain or via a Spanish consulate abroad. Power of attorney can allow a lawyer to manage this on your behalf.",
@@ -86,8 +86,8 @@ export const insights: Insight[] = [
     readMinutes: 6,
     relatedPropertySlugs: [
       "villa-sierra-blanca",
-      "townhouse-nagüeles",
-      "villa-estepona-hills",
+      "villa-nagueles",
+      "villa-estepona-coast",
     ],
     content: [
       "The terms Golden Mile and New Golden Mile are used loosely in marketing. For serious buyers, the distinctions matter: micro-location drives both lifestyle and residual value.",
@@ -127,7 +127,6 @@ export function getAllInsightSlugs(): string[] {
 
 export function getInsights(): Insight[] {
   return [...insights].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 }
