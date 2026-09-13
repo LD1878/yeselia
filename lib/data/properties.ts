@@ -1,4 +1,5 @@
-import type { Property } from "../types";
+import type { Locale, Property } from "../types";
+import { propertyCopyNl } from "./property-copy-nl";
 
 /**
  * Curated collection of Costa del Sol residences from €5m.
@@ -804,8 +805,30 @@ export const properties: Property[] = [
   },
 ];
 
-export function getFeaturedProperties(limit = 4): Property[] {
-  return properties.filter((p) => p.featured).slice(0, limit);
+export function localizeProperty(
+  property: Property,
+  locale: Locale,
+): Property {
+  if (locale !== "nl") return property;
+  const copy = propertyCopyNl[property.slug];
+  if (!copy) return property;
+  return {
+    ...property,
+    shortDescription: copy.shortDescription,
+    description: copy.description,
+    locationContext: copy.locationContext,
+    features: copy.features,
+  };
+}
+
+export function getFeaturedProperties(
+  limit = 4,
+  locale: Locale = "en",
+): Property[] {
+  return properties
+    .filter((p) => p.featured)
+    .slice(0, limit)
+    .map((p) => localizeProperty(p, locale));
 }
 
 export function getPropertyBySlug(slug: string): Property | undefined {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLocale } from "@/components/layout/LocaleProvider";
 import { PropertyImage } from "@/components/ui/PropertyImage";
+import { propertyTypeLabel } from "@/lib/i18n";
 import type { Property } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ export function PropertyCard({
   className,
   priority = false,
 }: PropertyCardProps) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const statusLabel =
     property.status === "Under Offer"
@@ -62,17 +63,17 @@ export function PropertyCard({
 
           <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-grey-700">
             <div>
-              <dt className="sr-only">Type</dt>
-              <dd>{property.type}</dd>
+              <dt className="sr-only">{t("fact.type")}</dt>
+              <dd>{propertyTypeLabel(property.type, locale)}</dd>
             </div>
             <div>
-              <dt className="sr-only">Bedrooms</dt>
+              <dt className="sr-only">{t("fact.bedrooms")}</dt>
               <dd>
                 {property.bedrooms} {t("properties.bed")}
               </dd>
             </div>
             <div>
-              <dt className="sr-only">Built area</dt>
+              <dt className="sr-only">{t("fact.built")}</dt>
               <dd>{property.builtM2} m²</dd>
             </div>
           </dl>

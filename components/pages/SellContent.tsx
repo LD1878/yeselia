@@ -6,56 +6,67 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 import type { DictionaryKey } from "@/lib/i18n";
+import { loc } from "@/lib/localized";
 
 const timeline = [
   {
     title: {
       en: "Confidential valuation",
       es: "Valoración confidencial",
+      nl: "Vertrouwelijke taxatie",
     },
     text: {
       en: "A private assessment based on comparable evidence, condition, legal status and current demand. No obligation to proceed.",
       es: "Una evaluación privada basada en comparables, estado, situación legal y demanda actual. Sin obligación de continuar.",
+      nl: "Een privébeoordeling op basis van vergelijkbaar bewijs, staat, juridische status en huidige vraag. Geen verplichting om verder te gaan.",
     },
   },
   {
     title: {
       en: "Preparation of the file",
       es: "Preparación del expediente",
+      nl: "Voorbereiding van het dossier",
     },
     text: {
       en: "Title, licences, community certificates and technical documentation assembled before any marketing begins.",
       es: "Título, licencias, certificados de comunidad y documentación técnica reunidos antes de cualquier marketing.",
+      nl: "Titel, vergunningen, communitycertificaten en technische documentatie worden verzameld voordat enige marketing begint.",
     },
   },
   {
     title: {
       en: "Strategy and exposure",
       es: "Estrategia y exposición",
+      nl: "Strategie en zichtbaarheid",
     },
     text: {
       en: "Open marketing, limited circulation or fully confidential introductions. You choose the level of visibility.",
       es: "Marketing abierto, circulación limitada o presentaciones totalmente confidenciales. Usted elige el nivel de visibilidad.",
+      nl: "Open marketing, beperkte circulatie of volledig vertrouwelijke introducties. U kiest het niveau van zichtbaarheid.",
     },
   },
   {
     title: {
       en: "Qualified viewings only",
       es: "Solo visitas cualificadas",
+      nl: "Alleen gekwalificeerde bezichtigingen",
     },
     text: {
       en: "Access is granted to pre-qualified buyers with demonstrated capacity and intent. No time-wasters.",
       es: "El acceso se concede a compradores precalificados con capacidad e intención demostradas. Sin pérdidas de tiempo.",
+      nl: "Toegang wordt verleend aan vooraf gekwalificeerde kopers met aangetoonde draagkracht en intentie. Geen tijdverspillers.",
     },
   },
   {
     title: {
       en: "Negotiation and completion",
       es: "Negociación y cierre",
+      nl: "Onderhandeling en levering",
     },
     text: {
       en: "Offers are evaluated with legal and commercial clarity. Completion is managed through to the notary.",
       es: "Las ofertas se evalúan con claridad jurídica y comercial. El cierre se gestiona hasta el notario.",
+      nl: "Biedingen worden met juridische en commerciële helderheid beoordeeld. De levering wordt tot aan de notaris beheerd.",
     },
   },
 ];
@@ -130,12 +141,12 @@ export function SellContent() {
                   </div>
                   <div className="sm:col-span-4">
                     <h3 className="heading-section text-xl sm:text-2xl">
-                      {item.title[locale]}
+                      {loc(item.title, locale)}
                     </h3>
                   </div>
                   <div className="sm:col-span-7">
                     <p className="text-sm leading-relaxed text-grey-700 sm:text-base">
-                      {item.text[locale]}
+                      {loc(item.text, locale)}
                     </p>
                   </div>
                 </FadeIn>

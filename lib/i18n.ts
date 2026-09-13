@@ -1,12 +1,12 @@
 /**
- * English / Spanish dictionaries for UI chrome and key marketing copy.
+ * English / Spanish / Dutch dictionaries for UI chrome and key marketing copy.
  * Locale is selected client-side via LocaleProvider.
  */
 
-import type { Locale } from "./types";
+import type { Locale, PropertyType } from "./types";
 
 export const defaultLocale: Locale = "en";
-export const locales: Locale[] = ["en", "es"];
+export const locales: Locale[] = ["en", "es", "nl"];
 
 const en = {
   // Nav
@@ -61,9 +61,11 @@ const en = {
   // Language
   "lang.en": "EN",
   "lang.es": "ES",
+  "lang.nl": "NL",
   "lang.label": "Language",
   "lang.switchToEn": "Switch to English",
   "lang.switchToEs": "Cambiar a español",
+  "lang.switchToNl": "Overschakelen naar Nederlands",
 
   // Home
   "home.hero.eyebrow": "Costa del Sol",
@@ -214,8 +216,19 @@ const en = {
   "properties.empty.text":
     "Adjust your filters, or contact us for a confidential search tailored to your brief.",
   "properties.bed": "bed",
+  "properties.available": "Available",
   "properties.underOffer": "Under Offer",
   "properties.sold": "Sold",
+  "type.Villa": "Villa",
+  "type.Apartment": "Apartment",
+  "type.Penthouse": "Penthouse",
+  "type.Townhouse": "Townhouse",
+  "type.Plot": "Plot",
+  "type.Other": "Other",
+  "properties.filter.under2m": "Under €2M",
+  "properties.filter.2m4m": "€2M - €4M",
+  "properties.filter.4m8m": "€4M - €8M",
+  "properties.filter.8mplus": "€8M+",
   "properties.keyFacts": "Key facts",
   "properties.description": "Description",
   "properties.location": "Location",
@@ -351,9 +364,11 @@ const es: Record<DictionaryKey, string> = {
 
   "lang.en": "EN",
   "lang.es": "ES",
+  "lang.nl": "NL",
   "lang.label": "Idioma",
   "lang.switchToEn": "Switch to English",
   "lang.switchToEs": "Cambiar a español",
+  "lang.switchToNl": "Overschakelen naar Nederlands",
 
   "home.hero.eyebrow": "Costa del Sol",
   "home.hero.title1": "Propiedades serias.",
@@ -499,8 +514,19 @@ const es: Record<DictionaryKey, string> = {
   "properties.empty.text":
     "Ajuste los filtros, o contáctenos para una búsqueda confidencial adaptada a su brief.",
   "properties.bed": "hab",
+  "properties.available": "Disponible",
   "properties.underOffer": "En oferta",
   "properties.sold": "Vendida",
+  "type.Villa": "Villa",
+  "type.Apartment": "Apartamento",
+  "type.Penthouse": "Ático",
+  "type.Townhouse": "Adosado",
+  "type.Plot": "Parcela",
+  "type.Other": "Otro",
+  "properties.filter.under2m": "Menos de €2M",
+  "properties.filter.2m4m": "€2M - €4M",
+  "properties.filter.4m8m": "€4M - €8M",
+  "properties.filter.8mplus": "€8M+",
   "properties.keyFacts": "Datos clave",
   "properties.description": "Descripción",
   "properties.location": "Ubicación",
@@ -581,13 +607,322 @@ const es: Record<DictionaryKey, string> = {
   "fact.status": "Estado",
 };
 
+const nl: Record<DictionaryKey, string> = {
+  "nav.properties": "Woningen",
+  "nav.buy": "Kopen",
+  "nav.sell": "Verkopen",
+  "nav.about": "Over ons",
+  "nav.insights": "Inzichten",
+  "nav.contact": "Contact",
+  "nav.enquire": "Informeren",
+  "nav.menu": "Menu",
+  "nav.close": "Menu sluiten",
+  "nav.open": "Menu openen",
+  "nav.primary": "Hoofdnavigatie",
+  "nav.mobile": "Mobiele navigatie",
+  "nav.skip": "Ga naar inhoud",
+
+  "cta.buy": "Kopen",
+  "cta.sell": "Verkopen",
+  "cta.viewCollection": "Collectie bekijken",
+  "cta.viewAll": "Alles bekijken",
+  "cta.requestViewing": "Privébezichtiging aanvragen",
+  "cta.contact": "Contact",
+  "cta.valuation": "Vertrouwelijke taxatie aanvragen",
+  "cta.browseCollection": "De collectie bekijken",
+  "cta.buyWith": "Kopen met Yeselia",
+  "cta.sellWith": "Verkopen met Yeselia",
+  "cta.sendEnquiry": "Aanvraag versturen",
+  "cta.sendMessage": "Bericht versturen",
+  "cta.submitEnquiry": "Aanvraag versturen",
+  "cta.requestValuation": "Taxatie aanvragen",
+  "cta.sending": "Verzenden…",
+  "cta.fullCollection": "Volledige collectie",
+  "cta.readInsights": "Inzichten lezen",
+  "cta.allInsights": "Alle inzichten",
+  "cta.home": "Home",
+  "cta.aboutPractice": "Over het kantoor",
+
+  "footer.rights": "Alle rechten voorbehouden.",
+  "footer.tagline":
+    "Door een advocaat geleide luxe vastgoed op de Costa del Sol. Serieuze woningen. Serieuze kopers. Volledige juridische zekerheid",
+  "footer.explore": "Ontdekken",
+  "footer.company": "Kantoor",
+  "footer.legal": "Juridisch",
+  "footer.privacy": "Privacy",
+  "footer.legalNotice": "Juridische kennisgeving",
+  "footer.collection": "Collectie",
+  "footer.region": "Costa del Sol · Spanje",
+
+  "lang.en": "EN",
+  "lang.es": "ES",
+  "lang.nl": "NL",
+  "lang.label": "Taal",
+  "lang.switchToEn": "Switch to English",
+  "lang.switchToEs": "Cambiar a español",
+  "lang.switchToNl": "Overschakelen naar Nederlands",
+
+  "home.hero.eyebrow": "Costa del Sol",
+  "home.hero.title1": "Serieuze woningen.",
+  "home.hero.title2": "Serieuze kopers.",
+  "home.hero.title3": "Volledige juridische zekerheid",
+  "home.hero.lead":
+    "Door een advocaat geleide luxe vastgoed. Waar dubbele kwalificatie samenkomt met de mooiste residences van de Costa del Sol.",
+  "home.pos.eyebrow": "Positionering",
+  "home.pos.title": "Een andere standaard van vertegenwoordiging",
+  "home.pos.p1":
+    "Yeselia & Co. berust op een eenvoudige overtuiging: vastgoedtransacties van hoge waarde verdienen dezelfde gestrengheid als juridisch werk van hoog risico. Onze oprichtster is zowel gekwalificeerd advocaat als vastgoedspecialist. Die dubbele expertise is geen slogan. Het is de wijze waarop ieder mandaat wordt uitgevoerd.",
+  "home.pos.p2":
+    "Wij werken met internationale kopers die zekerheid verlangen, en met eigenaren die discretie verlangen. De collectie is gecureerd. Het proces is kalm. De juridische grondslag is niet onderhandelbaar.",
+  "home.collection.eyebrow": "Collectie",
+  "home.collection.title": "Geselecteerde residences",
+  "home.collection.desc":
+    "Een afgewogen selectie van woningen die thans via Yeselia & Co. beschikbaar zijn.",
+  "home.cred.eyebrow": "Kwalificaties",
+  "home.cred.title": "Juridische zekerheid in het centrum",
+  "home.cred.desc":
+    "Vastgoedadvies zonder juridische diepgang is onvolledig. Juridisch advies zonder marktkennis is abstract. Wij bieden beide.",
+  "home.cred.1.title": "Gekwalificeerd advocaat",
+  "home.cred.1.text":
+    "Juridische due diligence wordt niet als bijzaak uitbesteed. Zij is vanaf het eerste gesprek integraal.",
+  "home.cred.2.title": "Vastgoedspecialist",
+  "home.cred.2.text":
+    "Marktkennis in Marbella, Benahavís, Estepona en de bredere Costa del Sol.",
+  "home.cred.3.title": "Private-clientstandaard",
+  "home.cred.3.text":
+    "Discrete behandeling van gevoelige mandaten. Vooraf gekwalificeerde introducties. Geen publiek schouwspel.",
+  "home.process.eyebrow": "Proces",
+  "home.process.title": "Heldere stappen. Geen theater.",
+  "home.process.desc":
+    "Of u nu verwerft of verkoopt, de volgorde is weloverwogen en transparant.",
+  "home.process.1.title": "Briefing",
+  "home.process.1.text":
+    "Wij beginnen met een precies gesprek: eisen, tijdlijn, juridische context en voorkeuren voor discretie.",
+  "home.process.2.title": "Selectie",
+  "home.process.2.text":
+    "U ziet alleen woningen die aan uw criteria voldoen. Geen vulling. Geen bezichtigingen die tijd verspillen.",
+  "home.process.3.title": "Due diligence",
+  "home.process.3.text":
+    "Titel, stedenbouw, vergunningen en fiscale gevolgen worden beoordeeld voordat de verplichting dieper wordt.",
+  "home.process.4.title": "Levering",
+  "home.process.4.text":
+    "Onderhandeling, contract en notariële levering worden als één doorlopend proces gecoördineerd.",
+  "home.cta.title": "Begin een privégesprek",
+  "home.cta.desc":
+    "Laat ons weten of u wilt kopen of verkopen. Wij antwoorden met helderheid, niet met druk.",
+
+  "buy.hero.eyebrow": "Verwerven",
+  "buy.hero.title": "Kopen met Yeselia",
+  "buy.hero.desc":
+    "Vertegenwoordiging voor internationale en binnenlandse kopers die meer nodig hebben dan een bezichtigingsagenda. Dubbel gekwalificeerd advies van het eerste gesprek tot de notaris.",
+  "buy.diff.eyebrow": "Verschil",
+  "buy.diff.title": "Waarom werken met een advocaat-makelaar",
+  "buy.diff.p1":
+    "Op de Costa del Sol is een mooie presentatie gebruikelijk. Een schone juridische status is dat niet altijd. Wanneer uw adviseur ook gekwalificeerd advocaat is, wordt risico eerder herkend, worden stukken met een ander oog gelezen, en rusten commerciële beslissingen op vaste grond.",
+  "buy.diff.p2":
+    "U beheert geen parallelle relaties met een makelaar en een afzonderlijk juridisch team dat elkaar slechts bij crises ontmoet. Eén kantoor. Eén standaard. Eén aanspreekbaar proces.",
+  "buy.process.eyebrow": "Proces",
+  "buy.process.title": "Hoe een aankoop verloopt",
+  "buy.process.desc":
+    "Een heldere volgorde, ontworpen voor vermogende kopers die tijd en zekerheid waarderen.",
+  "buy.guides.eyebrow": "Gidsen",
+  "buy.guides.title": "Juridische en praktische bronnen",
+  "buy.guides.desc":
+    "Essentiële lectuur voor serieuze kopers. Geschreven om te informeren, niet om te verkopen.",
+  "buy.enquire.eyebrow": "Aanvraag",
+  "buy.enquire.title": "Begin uw zoektocht",
+  "buy.enquire.desc":
+    "Deel uw eisen. Wij antwoorden met een helder beeld van wat realistisch, beschikbaar en solide is.",
+
+  "sell.hero.eyebrow": "Vervreemden",
+  "sell.hero.title": "Verkopen met Yeselia",
+  "sell.hero.desc":
+    "Voor eigenaren die privacy, voorbereiding en een reeds gefilterde kopersgroep waarderen. Uw woning is geen publiek schouwspel.",
+  "sell.val.eyebrow": "Taxatie",
+  "sell.val.title": "Vraag een vertrouwelijke taxatie aan",
+  "sell.val.desc":
+    "Vertel ons over uw woning. Iedere aanvraag behandelen wij als privé. Er is geen listing, geen marketing en geen mededeling aan derden zonder uw schriftelijke instructie.",
+  "sell.val.1": "Geen verplichting tot listing",
+  "sell.val.2": "Netwerk van vooraf gekwalificeerde kopers",
+  "sell.val.3": "Door een advocaat geleide voorbereiding van het verkoopdossier",
+  "sell.val.4": "Discretie als standaard",
+  "sell.process.eyebrow": "Proces",
+  "sell.process.title": "Een afgewogen verkooptijdlijn",
+  "sell.process.desc":
+    "Structuur vermindert risico. Voorbereiding versnelt serieuze kopers en beschermt uw onderhandelingspositie.",
+  "sell.card1.title": "Vooraf gekwalificeerde kopers",
+  "sell.card1.text":
+    "Open portalen trekken volume. Volume trekt ruis. Wij geven voorrang aan kopers die financiële draagkracht en echte intentie hebben aangetoond. Uw tijd, privacy en veiligheid worden als proces beschermd, niet als voorkeur.",
+  "sell.card2.title": "Privacy en discretie",
+  "sell.card2.text":
+    "Sommige mandaten vereisen volledige vertrouwelijkheid. Andere hebben baat bij selectieve zichtbaarheid. Wij structureren de marketing naar uw risicoprofiel en persoonlijke omstandigheden. Niets wordt gepubliceerd zonder instructie.",
+
+  "about.hero.eyebrow": "Kantoor",
+  "about.hero.title": "Over Yeselia & Co.",
+  "about.hero.desc":
+    "Een dubbel gekwalificeerd kantoor waar juridische gestrengheid en vastgoedexpertise nooit worden gescheiden.",
+  "about.founder.eyebrow": "Oprichtster",
+  "about.founder.title": "Dubbele kwalificatie",
+  "about.phil.eyebrow": "Filosofie",
+  "about.phil.title": "Hoe wij werken",
+  "about.phil.desc": "Beginselen die ieder mandaat beheersen.",
+  "about.cred.eyebrow": "Kwalificaties",
+  "about.cred.title": "Professionele grondslag",
+
+  "contact.hero.eyebrow": "Contact",
+  "contact.hero.title": "Neem contact op",
+  "contact.hero.desc":
+    "Aanvragen worden discreet behandeld. Deel zoveel context als u wenst. Wij antwoorden doorgaans binnen één werkdag.",
+  "contact.direct.eyebrow": "Direct",
+  "contact.direct.title": "Hoe u ons bereikt",
+  "contact.email": "E-mail",
+  "contact.telephone": "Telefoon",
+  "contact.office": "Kantoor",
+  "contact.hours": "Openingstijden",
+  "contact.hours.days": "Maandag tot en met vrijdag",
+  "contact.hours.time": "10:00 - 18:00 CET",
+  "contact.hours.note":
+    "Privéafspraken buiten deze uren in overleg.",
+  "contact.form.title": "Stuur een bericht",
+  "contact.form.required":
+    "Velden gemarkeerd met een paars teken zijn verplicht.",
+
+  "properties.hero.eyebrow": "Collectie",
+  "properties.hero.title": "Woningen",
+  "properties.hero.desc":
+    "Een gecureerde selectie residences in Marbella, Benahavís, Estepona en de bredere Costa del Sol. Iedere woning wordt uitsluitend met de essentiële feiten gepresenteerd.",
+  "properties.filter.location": "Locatie",
+  "properties.filter.type": "Type",
+  "properties.filter.bedrooms": "Slaapkamers",
+  "properties.filter.price": "Prijs",
+  "properties.filter.allLocations": "Alle locaties",
+  "properties.filter.allTypes": "Alle types",
+  "properties.filter.any": "Alle",
+  "properties.filter.anyPrice": "Iedere prijs",
+  "properties.filter.reset": "Filters wissen",
+  "properties.filter.count": "{n} woningen",
+  "properties.filter.countOne": "{n} woning",
+  "properties.empty.title": "Geen woningen komen overeen",
+  "properties.empty.text":
+    "Pas uw filters aan, of neem contact met ons op voor een vertrouwelijke zoektocht op maat van uw briefing.",
+  "properties.bed": "slk",
+  "properties.available": "Beschikbaar",
+  "properties.underOffer": "Onder bod",
+  "properties.sold": "Verkocht",
+  "type.Villa": "Villa",
+  "type.Apartment": "Appartement",
+  "type.Penthouse": "Penthouse",
+  "type.Townhouse": "Herenhuis",
+  "type.Plot": "Perceel",
+  "type.Other": "Overig",
+  "properties.filter.under2m": "Onder €2M",
+  "properties.filter.2m4m": "€2M - €4M",
+  "properties.filter.4m8m": "€4M - €8M",
+  "properties.filter.8mplus": "€8M+",
+  "properties.keyFacts": "Kerngegevens",
+  "properties.description": "Beschrijving",
+  "properties.location": "Ligging",
+  "properties.features": "Kenmerken",
+  "properties.related": "Gerelateerde woningen",
+  "properties.related.eyebrow": "Verder",
+  "properties.viewing.title": "Privébezichtiging aanvragen",
+  "properties.viewing.desc":
+    "Bezichtigingen zijn op afspraak en beperkt tot serieuze aanvragen.",
+  "properties.viewing.submit": "Bezichtiging aanvragen",
+  "properties.legalNote":
+    "Iedere verwerving via Yeselia & Co. wordt ondersteund door due diligence onder leiding van een advocaat. Juridische toetsing van titel, stedenbouwkundige status en contractvoorwaarden is integraal aan het proces, geen optionele extra.",
+
+  "insights.hero.eyebrow": "Perspectieven",
+  "insights.hero.title": "Inzichten",
+  "insights.hero.desc":
+    "Gidsen en commentaar voor serieuze kopers en eigenaren. Geschreven met juridische precisie en markthelderheid.",
+  "insights.minRead": "min",
+  "insights.minReadFull": "min leestijd",
+  "insights.disclaimer":
+    "Deze gids is algemene informatie. Zij is geen vervanging van advies over een concrete transactie. Voor raad op maat van uw omstandigheden,",
+  "insights.disclaimerLink": "neem contact op met Yeselia & Co.",
+  "insights.cta.title": "Bespreek uw wensen",
+  "insights.cta.desc":
+    "Of u nu koopt of verkoopt, wij beginnen met een privégesprek.",
+  "insights.related.eyebrow": "Collectie",
+  "insights.related.title": "Gerelateerde woningen",
+
+  "form.name": "Volledige naam",
+  "form.email": "E-mail",
+  "form.phone": "Telefoon",
+  "form.interest": "Interesse",
+  "form.property": "Woning",
+  "form.message": "Bericht",
+  "form.message.hint":
+    "Deel zoveel context als u wenst. Alle aanvragen worden vertrouwelijk behandeld.",
+  "form.message.placeholder": "Hoe kunnen wij u van dienst zijn?",
+  "form.name.placeholder": "Uw naam",
+  "form.email.placeholder": "u@voorbeeld.com",
+  "form.phone.placeholder": "+00 000 000 000",
+  "form.interest.general": "Algemene aanvraag",
+  "form.interest.buy": "Kopen",
+  "form.interest.sell": "Verkopen",
+  "form.interest.viewing": "Privébezichtiging",
+  "form.privacy":
+    "Door te versturen stemt u in met contact over deze aanvraag. Wij delen uw gegevens nooit.",
+  "form.thanks.title": "Dank u",
+  "form.thanks.text":
+    "Uw bericht is ontvangen. Een lid van het team van Yeselia & Co. antwoordt met zorg en discretie, doorgaans binnen één werkdag.",
+  "form.val.thanks.title": "Taxatieverzoek ontvangen",
+  "form.val.thanks.text":
+    "Dank u. Uw verzoek is vertrouwelijk. Wij nemen binnenkort contact op voor een privégesprek, zonder verplichting en zonder openbare listing tenzij u ons daartoe instrueert.",
+  "form.val.location": "Locatie van de woning",
+  "form.val.location.placeholder": "bijv. Sierra Blanca, Marbella",
+  "form.val.type": "Type woning",
+  "form.val.size": "Geschatte omvang",
+  "form.val.size.placeholder": "Bebouwd m² / perceel m²",
+  "form.val.notes": "Vertrouwelijke toelichting",
+  "form.val.notes.hint":
+    "Optioneel. Deel context die ons helpt ons voor te bereiden.",
+  "form.val.privacy":
+    "Uw aanvraag is privé. Wij listen of promoten uw woning niet zonder schriftelijke instructie.",
+
+  "notFound.code": "404",
+  "notFound.title": "Pagina niet gevonden",
+  "notFound.text":
+    "De opgevraagde pagina bestaat niet of is verplaatst. Keer terug naar home of bekijk de collectie.",
+
+  "fact.price": "Prijs",
+  "fact.type": "Type",
+  "fact.location": "Locatie",
+  "fact.area": "Gebied",
+  "fact.bedrooms": "Slaapkamers",
+  "fact.bathrooms": "Badkamers",
+  "fact.built": "Bebouwd",
+  "fact.plot": "Perceel",
+  "fact.year": "Jaar",
+  "fact.status": "Status",
+};
+
+const dictionaries: Record<Locale, Record<DictionaryKey, string>> = {
+  en,
+  es,
+  nl,
+};
+
 export function t(key: DictionaryKey, locale: Locale = defaultLocale): string {
-  if (locale === "en") return en[key];
-  return es[key] ?? en[key];
+  return dictionaries[locale][key] ?? en[key];
 }
 
 export function getDictionary(locale: Locale = defaultLocale) {
-  return locale === "en" ? en : es;
+  return dictionaries[locale];
+}
+
+const typeKeys: Record<PropertyType, DictionaryKey> = {
+  Villa: "type.Villa",
+  Apartment: "type.Apartment",
+  Penthouse: "type.Penthouse",
+  Townhouse: "type.Townhouse",
+  Plot: "type.Plot",
+};
+
+export function propertyTypeLabel(type: PropertyType, locale: Locale): string {
+  return t(typeKeys[type], locale);
 }
 
 /** Simple placeholder replace: tFormat("properties.filter.count", locale, { n: 3 }) */

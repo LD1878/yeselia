@@ -35,7 +35,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (stored === "en" || stored === "es") {
+      if (stored === "en" || stored === "es" || stored === "nl") {
         setLocaleState(stored);
       }
     } catch {

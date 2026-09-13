@@ -6,6 +6,7 @@ import { PropertyCard } from "@/components/property/PropertyCard";
 import { Field, Select } from "@/components/ui/FormFields";
 import type { Property, PropertyType } from "@/lib/types";
 import { propertyLocations, propertyTypes } from "@/lib/data/properties";
+import { propertyTypeLabel } from "@/lib/i18n";
 
 type Filters = {
   location: string;
@@ -37,7 +38,7 @@ function matchesPrice(price: number, band: string): boolean {
 }
 
 export function PropertyFilters({ properties }: { properties: Property[] }) {
-  const { t, tFormat } = useLocale();
+  const { t, tFormat, locale } = useLocale();
   const [filters, setFilters] = useState<Filters>(initial);
 
   const filtered = useMemo(() => {
@@ -96,7 +97,7 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
               <option value="all">{t("properties.filter.allTypes")}</option>
               {propertyTypes.map((type) => (
                 <option key={type} value={type}>
-                  {type}
+                  {propertyTypeLabel(type, locale)}
                 </option>
               ))}
             </Select>
@@ -125,10 +126,10 @@ export function PropertyFilters({ properties }: { properties: Property[] }) {
               aria-label={t("properties.filter.price")}
             >
               <option value="all">{t("properties.filter.anyPrice")}</option>
-              <option value="under-2m">Under €2M</option>
-              <option value="2m-4m">€2M - €4M</option>
-              <option value="4m-8m">€4M - €8M</option>
-              <option value="8m-plus">€8M+</option>
+              <option value="under-2m">{t("properties.filter.under2m")}</option>
+              <option value="2m-4m">{t("properties.filter.2m4m")}</option>
+              <option value="4m-8m">{t("properties.filter.4m8m")}</option>
+              <option value="8m-plus">{t("properties.filter.8mplus")}</option>
             </Select>
           </Field>
         </div>

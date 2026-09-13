@@ -7,8 +7,8 @@ import { getInsights } from "@/lib/data/insights";
 import { formatDate } from "@/lib/utils";
 
 export function InsightsContent() {
-  const { t } = useLocale();
-  const articles = getInsights();
+  const { t, locale } = useLocale();
+  const articles = getInsights(locale);
 
   return (
     <>

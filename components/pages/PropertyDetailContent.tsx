@@ -7,8 +7,9 @@ import { PropertyCard } from "@/components/property/PropertyCard";
 import { PropertyGallery } from "@/components/property/PropertyGallery";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { localizeProperty } from "@/lib/data/properties";
+import { propertyTypeLabel, type DictionaryKey } from "@/lib/i18n";
 import type { Property } from "@/lib/types";
-import type { DictionaryKey } from "@/lib/i18n";
 
 type Props = {
   property: Property;
@@ -16,28 +17,29 @@ type Props = {
 };
 
 export function PropertyDetailContent({ property, related }: Props) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const display = localizeProperty(property, locale);
 
   const statusLabel =
-    property.status === "Under Offer"
+    display.status === "Under Offer"
       ? t("properties.underOffer")
-      : property.status === "Sold"
+      : display.status === "Sold"
         ? t("properties.sold")
-        : property.status;
+        : t("properties.available");
 
   const facts: Array<{ labelKey: DictionaryKey; value: string }> = [
-    { labelKey: "fact.price", value: property.priceLabel },
-    { labelKey: "fact.type", value: property.type },
-    { labelKey: "fact.location", value: property.location },
-    { labelKey: "fact.area", value: property.area },
-    { labelKey: "fact.bedrooms", value: String(property.bedrooms) },
-    { labelKey: "fact.bathrooms", value: String(property.bathrooms) },
-    { labelKey: "fact.built", value: `${property.builtM2} m²` },
-    ...(property.plotM2
-      ? [{ labelKey: "fact.plot" as const, value: `${property.plotM2} m²` }]
+    { labelKey: "fact.price", value: display.priceLabel },
+    { labelKey: "fact.type", value: propertyTypeLabel(display.type, locale) },
+    { labelKey: "fact.location", value: display.location },
+    { labelKey: "fact.area", value: display.area },
+    { labelKey: "fact.bedrooms", value: String(display.bedrooms) },
+    { labelKey: "fact.bathrooms", value: String(display.bathrooms) },
+    { labelKey: "fact.built", value: `${display.builtM2} m²` },
+    ...(display.plotM2
+      ? [{ labelKey: "fact.plot" as const, value: `${display.plotM2} m²` }]
       : []),
-    ...(property.yearBuilt
-      ? [{ labelKey: "fact.year" as const, value: String(property.yearBuilt) }]
+    ...(display.yearBuilt
+      ? [{ labelKey: "fact.year" as const, value: String(display.yearBuilt) }]
       : []),
     { labelKey: "fact.status", value: statusLabel },
   ];
@@ -60,11 +62,11 @@ export function PropertyDetailContent({ property, related }: Props) {
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="text-grey-800">{property.title}</li>
+              <li className="text-grey-800">{display.title}</li>
             </ol>
           </nav>
 
-          <PropertyGallery images={property.images} title={property.title} />
+          <PropertyGallery images={display.images} title={display.title} />
 
           <div className="grid gap-10 py-12 lg:grid-cols-12 lg:gap-14 lg:py-16">
             <div className="lg:col-span-7">
@@ -73,16 +75,16 @@ export function PropertyDetailContent({ property, related }: Props) {
                   className="h-1.5 w-1.5 rounded-full bg-purple"
                   aria-hidden="true"
                 />
-                {property.location} · {property.area}
+                {display.location} · {display.area}
               </p>
               <h1 className="heading-display mt-4 text-3xl sm:text-4xl lg:text-5xl">
-                {property.title}
+                {display.title}
               </h1>
               <p className="mt-4 text-xl font-bold tracking-tight text-black">
-                {property.priceLabel}
+                {display.priceLabel}
               </p>
               <p className="mt-6 text-pretty text-base leading-relaxed text-grey-800 sm:text-lg">
-                {property.shortDescription}
+                {display.shortDescription}
               </p>
 
               <div className="mt-10">
@@ -90,7 +92,7 @@ export function PropertyDetailContent({ property, related }: Props) {
                   {t("properties.description")}
                 </h2>
                 <div className="prose-yeselia mt-4">
-                  <p>{property.description}</p>
+                  <p>{display.description}</p>
                 </div>
               </div>
 
@@ -99,7 +101,7 @@ export function PropertyDetailContent({ property, related }: Props) {
                   {t("properties.location")}
                 </h2>
                 <p className="mt-4 text-pretty text-base leading-relaxed text-grey-800">
-                  {property.locationContext}
+                  {display.locationContext}
                 </p>
               </div>
 
@@ -108,7 +110,7 @@ export function PropertyDetailContent({ property, related }: Props) {
                   {t("properties.features")}
                 </h2>
                 <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {property.features.map((feature) => (
+                  {display.features.map((feature) => (
                     <li
                       key={feature}
                       className="flex items-start gap-3 text-sm text-grey-800"
@@ -155,7 +157,7 @@ export function PropertyDetailContent({ property, related }: Props) {
                   <div className="mt-6">
                     <ContactForm
                       intent="viewing"
-                      propertyTitle={property.title}
+                      propertyTitle={display.title}
                       submitLabel={t("properties.viewing.submit")}
                     />
                   </div>

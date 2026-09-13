@@ -68,12 +68,12 @@ export function ValuationForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t("form.val.type")} id="v-type">
           <Select id="v-type" name="type" defaultValue="Villa">
-            <option>Villa</option>
-            <option>Apartment</option>
-            <option>Penthouse</option>
-            <option>Townhouse</option>
-            <option>Plot</option>
-            <option>Other</option>
+            <option value="Villa">{t("type.Villa")}</option>
+            <option value="Apartment">{t("type.Apartment")}</option>
+            <option value="Penthouse">{t("type.Penthouse")}</option>
+            <option value="Townhouse">{t("type.Townhouse")}</option>
+            <option value="Plot">{t("type.Plot")}</option>
+            <option value="Other">{t("type.Other")}</option>
           </Select>
         </Field>
         <Field label={t("form.val.size")} id="v-size">

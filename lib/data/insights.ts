@@ -1,4 +1,5 @@
-import type { Insight } from "../types";
+import type { Insight, Locale } from "../types";
+import { insightCopyNl } from "./insight-copy-nl";
 
 export const insights: Insight[] = [
   {
@@ -117,6 +118,19 @@ export const insights: Insight[] = [
   },
 ];
 
+export function localizeInsight(insight: Insight, locale: Locale): Insight {
+  if (locale !== "nl") return insight;
+  const copy = insightCopyNl[insight.slug];
+  if (!copy) return insight;
+  return {
+    ...insight,
+    title: copy.title,
+    excerpt: copy.excerpt,
+    category: copy.category,
+    content: copy.content,
+  };
+}
+
 export function getInsightBySlug(slug: string): Insight | undefined {
   return insights.find((i) => i.slug === slug);
 }
@@ -125,8 +139,11 @@ export function getAllInsightSlugs(): string[] {
   return insights.map((i) => i.slug);
 }
 
-export function getInsights(): Insight[] {
-  return [...insights].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
+export function getInsights(locale: Locale = "en"): Insight[] {
+  return [...insights]
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    )
+    .map((insight) => localizeInsight(insight, locale));
 }

@@ -45,4 +45,4 @@ export interface NavItem {
   label: string;
 }
 
-export type Locale = "en" | "es";
+export type Locale = "en" | "es" | "nl";

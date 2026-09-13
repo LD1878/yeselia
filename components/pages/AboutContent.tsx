@@ -4,81 +4,105 @@ import { useLocale } from "@/components/layout/LocaleProvider";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { loc } from "@/lib/localized";
 import { siteConfig } from "@/lib/site";
 
 const founderCopy = {
   p1: {
     en: "Yeselia founded the practice on a clear observation: the most consequential property decisions on the Costa del Sol were often made with incomplete legal context, while legal advice arrived too late to shape the commercial outcome.",
     es: "Yeselia fundó el despacho a partir de una observación clara: las decisiones inmobiliarias más importantes en la Costa del Sol se tomaban a menudo con un contexto jurídico incompleto, mientras el asesoramiento legal llegaba demasiado tarde para moldear el resultado comercial.",
+    nl: "Yeselia heeft het kantoor opgericht vanuit een heldere waarneming: de meest gevolgrijke vastgoedbeslissingen op de Costa del Sol werden vaak genomen met onvolledige juridische context, terwijl juridisch advies te laat kwam om de commerciële uitkomst te vormen.",
   },
   p2: {
     en: "As both a qualified lawyer and a real estate specialist, she built Yeselia & Co. to close that gap. Clients instruct a single practice that understands market, mandate and statute with equal seriousness. The result is calmer transactions, fewer surprises and documentation that withstands scrutiny.",
     es: "Como abogada cualificada y especialista inmobiliaria, creó Yeselia & Co. para cerrar esa brecha. Los clientes encargan a un único despacho que entiende mercado, mandato y norma con la misma seriedad. El resultado: operaciones más serenas, menos sorpresas y documentación que resiste el escrutinio.",
+    nl: "Als zowel gekwalificeerd advocaat als vastgoedspecialist heeft zij Yeselia & Co. gebouwd om die kloof te sluiten. Cliënten instrueren één kantoor dat markt, mandaat en wet met gelijke ernst begrijpt. Het resultaat is kalmere transacties, minder verrassingen en documentatie die de toetsing doorstaat.",
   },
   p3: {
     en: "The work is selective by design. Not every property, and not every client, is a fit. Those who value precision over volume find a durable partner.",
     es: "El trabajo es selectivo por diseño. No toda propiedad, ni todo cliente, encaja. Quienes valoran la precisión por encima del volumen encuentran un socio duradero.",
+    nl: "Het werk is selectief van opzet. Niet iedere woning, en niet iedere cliënt, is een match. Wie precisie boven volume stelt, vindt een duurzame partner.",
   },
 };
 
 const philosophy = [
   {
-    title: { en: "Certainty first", es: "La certeza primero" },
+    title: {
+      en: "Certainty first",
+      es: "La certeza primero",
+      nl: "Zekerheid eerst",
+    },
     text: {
       en: "No recommendation proceeds without a clear view of legal and practical risk. Beauty without title is not a home.",
       es: "Ninguna recomendación avanza sin una visión clara del riesgo jurídico y práctico. La belleza sin título no es un hogar.",
+      nl: "Geen aanbeveling gaat verder zonder een helder beeld van juridisch en praktisch risico. Schoonheid zonder titel is geen woning.",
     },
   },
   {
-    title: { en: "Discretion always", es: "Discreción siempre" },
+    title: {
+      en: "Discretion always",
+      es: "Discreción siempre",
+      nl: "Altijd discretie",
+    },
     text: {
       en: "Private clients require private handling. Information is shared on a need-to-know basis, never for theatre.",
       es: "Los clientes privados requieren gestión privada. La información se comparte solo a quien debe saberla, nunca por teatro.",
+      nl: "Private clients vereisen privébehandeling. Informatie wordt gedeeld op need-to-know-basis, nooit voor theater.",
     },
   },
   {
-    title: { en: "Measured counsel", es: "Consejo mesurado" },
+    title: {
+      en: "Measured counsel",
+      es: "Consejo mesurado",
+      nl: "Afgewogen raad",
+    },
     text: {
       en: "We advise, we do not pressure. A transaction that should not proceed will be stopped, even when fees are at stake.",
       es: "Asesoramos, no presionamos. Una operación que no debe seguir se detiene, aunque haya honorarios en juego.",
+      nl: "Wij adviseren, wij oefenen geen druk. Een transactie die niet verder moet, wordt gestopt, ook wanneer honoraria op het spel staan.",
     },
   },
 ];
 
 const credentials = [
   {
-    term: { en: "Legal practice", es: "Práctica jurídica" },
+    term: { en: "Legal practice", es: "Práctica jurídica", nl: "Juridische praktijk" },
     detail: {
       en: "Qualified lawyer with focus on property transactions, due diligence and private client matters in Spain.",
       es: "Abogada cualificada con enfoque en operaciones inmobiliarias, diligencia debida y clientes privados en España.",
+      nl: "Gekwalificeerd advocaat met focus op vastgoedtransacties, due diligence en private-clientzaken in Spanje.",
     },
   },
   {
-    term: { en: "Real estate", es: "Inmobiliario" },
+    term: { en: "Real estate", es: "Inmobiliario", nl: "Vastgoed" },
     detail: {
       en: "Specialist knowledge of the Costa del Sol luxury market: Marbella, Benahavís, Estepona and surrounding areas.",
       es: "Conocimiento especializado del mercado de lujo de la Costa del Sol: Marbella, Benahavís, Estepona y alrededores.",
+      nl: "Specialistische kennis van de luxemarkt van de Costa del Sol: Marbella, Benahavís, Estepona en omliggende gebieden.",
     },
   },
   {
-    term: { en: "Client profile", es: "Perfil de cliente" },
+    term: { en: "Client profile", es: "Perfil de cliente", nl: "Cliëntenprofiel" },
     detail: {
       en: "International high-net-worth buyers, private owners and discreet institutional or family-office mandates.",
       es: "Compradores internacionales de alto patrimonio, propietarios privados y mandatos institucionales o family office discretos.",
+      nl: "Internationale vermogende kopers, particuliere eigenaren en discrete institutionele of family-office-mandaten.",
     },
   },
   {
-    term: { en: "Languages", es: "Idiomas" },
+    term: { en: "Languages", es: "Idiomas", nl: "Talen" },
     detail: {
-      en: "English and Spanish. Additional language support arranged as required for international clients.",
-      es: "Inglés y español. Soporte de idiomas adicionales según se requiera para clientes internacionales.",
+      en: "English, Spanish and Dutch. Additional language support arranged as required for international clients.",
+      es: "Inglés, español y neerlandés. Soporte de idiomas adicionales según se requiera para clientes internacionales.",
+      nl: "Engels, Spaans en Nederlands. Aanvullende taalondersteuning wordt naar behoefte voor internationale cliënten geregeld.",
     },
   },
   {
-    term: { en: "Base", es: "Sede" },
+    term: { en: "Base", es: "Sede", nl: "Vestiging" },
     detail: {
       en: `${siteConfig.address.locality}, ${siteConfig.address.region}, ${siteConfig.address.countryName}`,
       es: `${siteConfig.address.locality}, ${siteConfig.address.region}, ${siteConfig.address.countryName}`,
+      nl: `${siteConfig.address.locality}, ${siteConfig.address.region}, ${siteConfig.address.countryName}`,
     },
   },
 ];
@@ -105,13 +129,13 @@ export function AboutContent() {
             </div>
             <div className="space-y-6 lg:col-span-8">
               <p className="text-pretty text-lg leading-relaxed text-grey-800 sm:text-xl">
-                {founderCopy.p1[locale]}
+                {loc(founderCopy.p1, locale)}
               </p>
               <p className="text-pretty text-base leading-relaxed text-grey-700">
-                {founderCopy.p2[locale]}
+                {loc(founderCopy.p2, locale)}
               </p>
               <p className="text-pretty text-base leading-relaxed text-grey-700">
-                {founderCopy.p3[locale]}
+                {loc(founderCopy.p3, locale)}
               </p>
             </div>
           </div>
@@ -136,10 +160,10 @@ export function AboutContent() {
                   aria-hidden="true"
                 />
                 <h3 className="heading-section text-xl sm:text-2xl">
-                  {item.title[locale]}
+                  {loc(item.title, locale)}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {item.text[locale]}
+                  {loc(item.text, locale)}
                 </p>
               </div>
             ))}
@@ -164,10 +188,10 @@ export function AboutContent() {
                     className="grid gap-2 py-6 sm:grid-cols-3 sm:gap-8"
                   >
                     <dt className="text-sm font-semibold text-black">
-                      {row.term[locale]}
+                      {loc(row.term, locale)}
                     </dt>
                     <dd className="text-sm leading-relaxed text-grey-700 sm:col-span-2">
-                      {row.detail[locale]}
+                      {loc(row.detail, locale)}
                     </dd>
                   </div>
                 ))}
