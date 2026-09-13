@@ -126,15 +126,17 @@ NEXT_PUBLIC_SITE_URL=https://username.github.io/yeselia
 
 **https://yeselia.com**
 
-GitHub Pages is configured to deploy from the `main` branch root with the custom domain `yeselia.com`. The static export is published to the repository root (`index.html`, `_next/`, route folders, `CNAME`) with an empty `basePath` so assets resolve as `/_next/...`.
+GitHub Pages serves the Next.js static export (`out/`) at the custom domain `yeselia.com` with an empty `basePath`, so assets resolve as `/_next/...`. Source stays on `main`; the export is not committed to the branch.
 
 ### Automatic deploy
 
 Push changes under `app/`, `components/`, `lib/`, or related config to `main`. The workflow in `.github/workflows/deploy.yml`:
 
 1. Builds the Next.js static export with empty `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_SITE_URL=https://yeselia.com`
-2. Copies the `out/` contents to the branch root (including `CNAME` from `public/`)
-3. Commits and pushes the published site (no deploy loop: only source paths trigger the workflow)
+2. Ensures `out/CNAME` is `yeselia.com` (from `public/CNAME`) and `out/.nojekyll` is present
+3. Uploads `out/` and deploys it with official GitHub Pages actions (`upload-pages-artifact` + `deploy-pages`)
+
+In the repository **Settings → Pages**, Source must be **GitHub Actions**, and the custom domain must remain `yeselia.com`.
 
 You can also run the workflow manually from the Actions tab (`workflow_dispatch`).
 
@@ -145,10 +147,11 @@ You can also run the workflow manually from the Actions tab (`workflow_dispatch`
 export NEXT_PUBLIC_BASE_PATH=
 export NEXT_PUBLIC_SITE_URL=https://yeselia.com
 npm run build
-cp -a out/. .
-# Commit the published files, or preview with:
 npx serve out
 ```
+
+The workflow publishes `out/`; do not copy the export onto `main`.
+
 
 ### Project-pages path (optional)
 

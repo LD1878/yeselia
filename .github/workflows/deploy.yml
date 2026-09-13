@@ -1,7 +1,11 @@
 name: Deploy to GitHub Pages
 
-# Publishes the Next.js static export to the main branch root so
-# GitHub Pages (Deploy from branch: main /) serves the real site.
+# Publishes the Next.js static export from out/ with official Pages actions.
+# Source stays on main; the export is not committed back onto the branch.
+#
+# GitHub Pages: Settings → Pages → Source must be "GitHub Actions".
+# Keep the custom domain set to yeselia.com (HTTPS). The site is served from
+# the domain root with empty basePath so assets stay /_next/...
 on:
   push:
     branches: [main]
@@ -24,16 +28,16 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -52,26 +56,32 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://yeselia.com
         run: npm run build
 
-      - name: Publish export to branch root
+      - name: Prepare Pages artifact
         run: |
           set -euo pipefail
-
-          # Remove previous published site artefacts (keep source)
-          rm -rf _next about buy contact insights properties sell 404 docs
-          rm -f index.html index.txt 404.html robots.txt sitemap.xml CNAME
-
-          # Promote the fresh export to the repository root
-          # (CNAME comes from public/CNAME via the Next export)
-          cp -a out/. .
-          touch .nojekyll
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No site changes to publish."
-          else
-            git commit -m "deploy: publish static site for GitHub Pages"
-            git push
+          # CNAME must remain yeselia.com for the custom domain at the site root.
+          if [ -f public/CNAME ]; then
+            cp -f public/CNAME out/CNAME
           fi
+          # Prevent GitHub Pages from treating _next/ as a Jekyll-ignored folder.
+          touch out/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+          include-hidden-files: true
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
