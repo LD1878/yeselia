@@ -15,6 +15,25 @@
 /.next/
 /out/
 
+# Generated static export (published from out/ by CI; do not keep on main)
+/_next/
+/index.html
+/index.txt
+/404.html
+/404/
+/about/
+/buy/
+/contact/
+/insights/
+/properties/
+/sell/
+/robots.txt
+/sitemap.xml
+/CNAME
+/favicon.ico
+/.nojekyll
+
+
 # production
 /build
 
